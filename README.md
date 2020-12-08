@@ -1,2 +1,2 @@
-# Sofia-No-Broker-Rentals
+# Sofia-Property-Rent
 SoftUni Angular Project
