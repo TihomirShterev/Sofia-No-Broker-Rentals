@@ -1,5 +1,9 @@
 const { userController } = require("../controllers");
-const { isAuthNeededMiddleware } = require("../utils");
+const {
+  registerMiddlewareValidator, //
+  loginMiddlewareValidator,
+  isAuthNeededMiddleware
+} = require("../utils");
 
 module.exports = router => {
   router.get("/login", isAuthNeededMiddleware(false), userController.get.login);
@@ -10,9 +14,15 @@ module.exports = router => {
   router.post(
     "/register", //
     isAuthNeededMiddleware(false),
+    registerMiddlewareValidator,
     userController.post.register
   );
-  router.post("/login", isAuthNeededMiddleware(false), userController.post.login);
+  router.post(
+    "/login",
+    isAuthNeededMiddleware(false), //
+    loginMiddlewareValidator,
+    userController.post.login
+  );
 
   return router;
 };

@@ -2,10 +2,10 @@ const { saltRounds } = require("../config");
 
 module.exports = (mongoose, bcrypt) => {
   const { Schema, model: Model } = mongoose;
-  const { String } = Schema.Types;
+  const { String, ObjectId } = Schema.Types;
 
   const userSchema = new Schema({
-    email: {
+    username: {
       type: String,
       required: true,
       unique: true
@@ -13,7 +13,13 @@ module.exports = (mongoose, bcrypt) => {
     password: {
       type: String,
       required: true
-    }
+    },
+    itemsIncremented: [
+      {
+        type: ObjectId,
+        ref: "Item"
+      }
+    ]
   });
 
   userSchema.methods = {

@@ -1,5 +1,6 @@
 const { itemController } = require("../controllers");
 const { isAuthNeededMiddleware } = require("../utils");
+const { createMiddlewareValidator } = require("../utils");
 
 module.exports = router => {
   router.get("/create", isAuthNeededMiddleware(), itemController.get.create);
@@ -8,7 +9,7 @@ module.exports = router => {
   router.get("/delete/:itemId", isAuthNeededMiddleware(), itemController.get.delete);
   router.get("/increment/:itemId", isAuthNeededMiddleware(), itemController.get.increment);
 
-  router.post("/create", isAuthNeededMiddleware(), itemController.post.create);
+  router.post("/create", isAuthNeededMiddleware(), createMiddlewareValidator, itemController.post.create);
   router.post("/edit/:itemId", isAuthNeededMiddleware(), itemController.post.edit);
 
   return router;

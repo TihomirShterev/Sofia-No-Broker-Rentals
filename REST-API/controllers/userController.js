@@ -1,14 +1,14 @@
 const { User } = require("../models");
-const { jwt } = require("../utils");
+const { jwt, formValidator } = require("../utils");
 const { cookie } = require("../config");
 
 module.exports = {
   get: {
     login(req, res, next) {
-      // res.render("./user/login.hbs");
+      res.render("./user/login.hbs");
     },
     register(req, res, next) {
-      // res.render("./user/register.hbs");
+      res.render("./user/register.hbs");
     },
     logout(req, res, next) {
       res.clearCookie(cookie).redirect("/");
@@ -17,16 +17,22 @@ module.exports = {
   post: {
     register(req, res, next) {
       // console.log(req.body);
+      const formValidations = formValidator(req);
 
-      const { email, password } = { ...req.body };
+      if (!formValidations.isOk) {
+        res.render("./user/register.hbs", formValidations.contextOptions);
+        return;
+      }
 
-      User.findOne({ email })
+      const { username, password } = { ...req.body };
+
+      User.findOne({ username })
         .then(user => {
           if (user) {
-            throw new Error("The given email is already in use...");
+            throw new Error("The given username is already in use...");
           }
           // console.log(user);
-          return User.create({ email, password });
+          return User.create({ username, password });
         })
         .then(user => {
           // console.log(user.toString());
@@ -46,10 +52,16 @@ module.exports = {
 
     login(req, res, next) {
       // console.log(req.body);
+      const formValidations = formValidator(req);
 
-      const { email, password } = req.body;
+      if (!formValidations.isOk) {
+        res.render("./user/login.hbs", formValidations.contextOptions);
+        return;
+      }
 
-      User.findOne({ email })
+      const { username, password } = req.body;
+
+      User.findOne({ username })
         .then(user => {
           return Promise.all([user.comparePasswords(password), user]);
         })
