@@ -7,13 +7,15 @@ const appString = `Server is ready, listening on port: ${port}...`;
 
 require("./config/database")()
   .then(() => {
+    const config = require("./config/config");
+
     require("./config/express")(express, app);
     require("./config/routes")(express, app);
 
     app.use(
       cors({
-        origin: true,
-        // origin: config.origin,
+        // origin: true,
+        origin: config.origin,
         credentials: true
       })
     );

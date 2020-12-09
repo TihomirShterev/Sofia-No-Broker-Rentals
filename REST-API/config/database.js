@@ -4,7 +4,8 @@ const dbConnectionString = require("./").dbUrl;
 const dbConnectionOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useCreateIndex: true
+  useCreateIndex: true,
+  useFindAndModify: false
 };
 
 module.exports = () => {
