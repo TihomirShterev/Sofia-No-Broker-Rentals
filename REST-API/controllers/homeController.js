@@ -19,10 +19,11 @@ module.exports = {
           // .sort({ peopleWhoIncremented: -1 })
           // // .sort({ peopleWhoIncremented: "desc" })
           .then(items => {
-            // console.log(items);
-            res.render("./home/loggedIn.hbs", {
-              items
-            });
+            // // console.log(items);
+            res.json(items);
+            // res.render("./home/loggedIn.hbs", {
+            //   items
+            // });
           })
           .catch(e => console.log(e));
 
@@ -36,9 +37,10 @@ module.exports = {
         .limit(3)
         .then(items => {
           // console.log(items);
-          res.render("./home/guest.hbs", {
-            items
-          });
+          res.json(items);
+          // res.render("./home/guest.hbs", {
+          //   items
+          // });
         })
         .catch(e => console.log(e));
     }
