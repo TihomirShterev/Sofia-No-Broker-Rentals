@@ -1,6 +1,6 @@
 module.exports = mongoose => {
   const { Schema, model: Model } = mongoose;
-  const { String, ObjectId, Date } = Schema.Types;
+  const { String, ObjectId } = Schema.Types;
 
   const itemSchema = new Schema({
     title: {
@@ -16,14 +16,6 @@ module.exports = mongoose => {
       type: String,
       required: true
     },
-    duration: {
-      type: String,
-      required: true
-    },
-    createdAt: {
-      type: Date,
-      required: true
-    },
     creatorId: {
       type: ObjectId,
       required: true
@@ -35,7 +27,6 @@ module.exports = mongoose => {
       }
     ]
   });
-  // }, {timestamps: true}); // instead of createdAt and/or updatedAt
 
   return Model("Item", itemSchema);
 };

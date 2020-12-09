@@ -1,10 +1,9 @@
 const { Item, User } = require("../models");
-const { formValidator } = require("../utils");
 
 module.exports = {
   get: {
     create(req, res, next) {
-      res.render("./items/create.hbs");
+      // res.render("./items/create.hbs");
     },
     details(req, res, next) {
       let itemId = req.params.itemId;
@@ -25,14 +24,16 @@ module.exports = {
               isAlreadyIncremented = true;
             }
           }
-          res.render("./items/details.hbs", { ...item, isCreator, isAlreadyIncremented, peopleWhoIncremented });
+          res.json(item);
+          // res.render("./items/details.hbs", { ...item, isCreator, isAlreadyIncremented, peopleWhoIncremented });
         })
         .catch(next);
     },
 
     edit(req, res, next) {
       Item.findOne({ _id: req.params.itemId }).then(item => {
-        res.render("./items/edit.hbs", item);
+        console.log(item);
+        // res.render("./items/edit.hbs", item);
       });
     },
     delete(req, res, next) {
@@ -46,7 +47,7 @@ module.exports = {
       // console.log(req.user._id.toString());
       let userId = req.user._id.toString();
 
-      Promise.all([Item.updateOne({ _id: itemId }, { $push: { peopleWhoIncremented: userId } }), User.updateOne({ _id: userId }, { $push: { itemsIncremented: itemId } })])
+      Item.updateOne({ _id: itemId }, { $push: { peopleWhoIncremented: userId } })
         .then(() => {
           res.redirect(`/details/${itemId}`);
         })
@@ -57,15 +58,7 @@ module.exports = {
   post: {
     create(req, res, next) {
       // console.log(req.body);
-      const formValidations = formValidator(req);
-
-      if (!formValidations.isOk) {
-        res.render("./items/create.hbs", formValidations.contextOptions);
-        return;
-      }
-
-      const createdAt = new Date();
-      Item.create({ ...req.body, creatorId: req.user._id, createdAt })
+      Item.create({ ...req.body, creatorId: req.user._id })
         .then(createdItem => {
           // console.log(createdItem.toString());
           res.redirect("/");
