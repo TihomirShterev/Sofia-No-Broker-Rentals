@@ -1,3 +1,4 @@
+global.__basedir = __dirname;
 const express = require("express");
 const { port, origin } = require("./config");
 const cors = require("cors");
@@ -7,7 +8,6 @@ const appString = `Server is ready, listening on port: ${port}...`;
 
 require("./config/database")()
   .then(() => {
-
     require("./config/express")(express, app);
     require("./config/routes")(express, app);
 
