@@ -1,5 +1,5 @@
 const express = require("express");
-const { port } = require("./config");
+const { port, origin } = require("./config");
 const cors = require("cors");
 
 const app = express();
@@ -7,7 +7,6 @@ const appString = `Server is ready, listening on port: ${port}...`;
 
 require("./config/database")()
   .then(() => {
-    const config = require("./config/config");
 
     require("./config/express")(express, app);
     require("./config/routes")(express, app);
@@ -15,7 +14,7 @@ require("./config/database")()
     app.use(
       cors({
         // origin: true,
-        origin: config.origin,
+        origin,
         credentials: true
       })
     );
