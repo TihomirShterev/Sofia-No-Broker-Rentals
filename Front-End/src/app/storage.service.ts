@@ -41,7 +41,7 @@ export class BrowserStorage {
 
   getItem<T>(key: string): T {
     let item;
-    const tmp = this.localStorage.getItem(key); // tmp -> temporary
+    const tmp = this.localStorage.getItem(key);
 
     if (!tmp) { return null; }
 
@@ -55,10 +55,7 @@ export class BrowserStorage {
   }
 }
 
-// този сървис ще го използваме, когато искаме да правим server side rendering за приложението
 export class ServerStorage {
-// понеже на сървъра нямаме localStorage, си имплементираме обект, 
-// който симулира API-a, който localStorage-a има
   localStorage = {
     data: {},
     setItem<T>(key: string, item: T): void {
