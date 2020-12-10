@@ -1,17 +1,21 @@
 <header>
   <div class="mini-navbar-wrap">
       <div class="logo-wrap">
-          <p class="logo"><span class="logo">Sofia Property Rent</span></p>
+          <p class="logo"><span class="logo">SoftUni Forum</span></p>
       </div>
-      <div class="mini-navbar">
+      <div class="mini-navbar" *ngIf="!isLogged">
           <ul>
               <li>
-                  <a href="#">Login</a>
+                  <a href="#" (click)="loginHandler()">Login</a>
               </li>
               <li>
                   <a href="#">Register</a>
               </li>
           </ul>
+      </div>
+      <div class="mini-navbar" *ngIf="isLogged">
+          <div>HELLO, [username]@localdomain.com</div>
+          <a (click)="logoutHandler()">Logout</a>
       </div>
   </div>
   <nav>
@@ -20,10 +24,10 @@
               <a href="#">Home</a>
           </li>
           <li>
-              <a href="#">Offers</a>
+              <a href="#">Themes</a>
           </li>
           <li>
-              <a href="#">Create Offer</a>
+              <a href="#">New Theme</a>
           </li>
       </ul>
   </nav>

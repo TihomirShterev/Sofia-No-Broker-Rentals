@@ -6,19 +6,26 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ItemsComponent } from './items/items.component';
+import { DetailsComponent } from './details/details.component';
+import { UserService } from './user.service';
+import { storageServiceProvider } from './storage.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ItemsComponent
+    ItemsComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    UserService,
+    storageServiceProvider
+  ],
   bootstrap: [
     AppComponent,
     HeaderComponent,
