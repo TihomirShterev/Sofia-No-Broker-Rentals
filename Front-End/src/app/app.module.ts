@@ -10,6 +10,7 @@ import { ItemsComponent } from './items/items.component';
 import { DetailsComponent } from './details/details.component';
 import { UserService } from './user.service';
 import { storageServiceProvider } from './storage.service';
+import { ItemService } from './item.service';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { storageServiceProvider } from './storage.service';
   ],
   providers: [
     UserService,
+    ItemService,
     storageServiceProvider
   ],
   bootstrap: [

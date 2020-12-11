@@ -1,79 +1,8 @@
-<div class="item-title">
-                
-  <!-- item component  -->
-  <div class="item-container">
-      <div class="item-name-wrapper">
-          <div class="item-name">
-              <a href="#" class="normal">
-                  <h2>One-bedroom apartment</h2>
-              </a>
-              <div class="columns">
-                  <div class="peopleWhoIncremented">
-                      <!-- <button class="increment">Like</button> -->
-                      <p>Likes: <span>493</span></p>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="item-container">
-      <div class="item-name-wrapper">
-          <div class="item-name">
-              <a href="#" class="normal">
-                  <h2>Penthouse</h2>
-              </a>
-              <div class="columns">
-                  <div class="peopleWhoIncremented">
-                      <!-- <button class="decrement">Dislike</button> -->
-                      <p>Likes: <span>555</span></p>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="item-container">
-      <div class="item-name-wrapper">
-          <div class="item-name">
-              <a href="#" class="normal">
-                  <h2>Two-storey house</h2>
-              </a>
-              <div class="columns">
-                  <div class="peopleWhoIncremented">
-                      <!-- <button class="increment">Like</button> -->
-                      <p>Likes: <span>4</span></p>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="item-container">
-      <div class="item-name-wrapper">
-          <div class="item-name">
-              <a href="#" class="normal">
-                  <h2>Two-bedroom apartment</h2>
-              </a>
-              <div class="columns">
-                  <div class="peopleWhoIncremented">
-                      <!-- <button class="increment">Like</button> -->
-                      <p>Likes: <span>87</span></p>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="item-container">
-      <div class="item-name-wrapper">
-          <div class="item-name">
-              <a href="#" class="normal">
-                  <h2>Studio</h2>
-              </a>
-              <div class="columns">
-                  <div class="peopleWhoIncremented">
-                      <!-- <button class="increment">Like</button> -->
-                      <p>Likes: <span>33</span></p>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+<div *ngIf="items">
+  <app-details *ngFor="let item of items" [item]="item"></app-details>
+  <div *ngIf="items.length === 0">No Offers!</div>
+</div>
+
+<div *ngIf="!items">
+  <h1>Loading...</h1>
 </div>
