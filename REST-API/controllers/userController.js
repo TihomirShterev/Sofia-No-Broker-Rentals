@@ -11,7 +11,7 @@ module.exports = {
       // res.render("./user/register.hbs");
     },
     logout(req, res, next) {
-      res.clearCookie(cookie).redirect("/");
+      res.clearCookie(cookie).redirect("/home");
     }
   },
   post: {
@@ -36,7 +36,7 @@ module.exports = {
           res
             .status(200)
             .cookie(cookie, token, { maxAge: 3600000 }) //
-            .redirect("/");
+            .redirect("/items");
         })
         .catch(e => {
           console.log(e);
@@ -63,7 +63,7 @@ module.exports = {
           res
             .status(200)
             .cookie(cookie, token, { maxAge: 3600000 }) //
-            .redirect("/");
+            .redirect("/items");
         })
         .catch(e => {
           console.log(e);

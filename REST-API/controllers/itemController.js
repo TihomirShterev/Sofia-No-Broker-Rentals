@@ -2,6 +2,21 @@ const { Item, User } = require("../models");
 
 module.exports = {
   get: {
+    items(req, res, next) {
+      Item.find({}) // find({}), за да вземем всички записи в базата
+      .lean()
+        // .sort({ peopleWhoIncremented: -1 })
+        // // .sort({ peopleWhoIncremented: "desc" }) // втори вариант
+        .then(items => {
+          // console.log(items);
+          res.json(items);
+          // res.render("./items/items.hbs", {
+          //   items
+          // });
+        })
+        .catch(e => console.log(e));
+    },
+
     create(req, res, next) {
       // res.render("./items/create.hbs");
     },
@@ -38,7 +53,7 @@ module.exports = {
     },
     delete(req, res, next) {
       Item.deleteOne({ _id: req.params.itemId }).then(result => {
-        res.redirect("/");
+        res.redirect("/items");
       });
     },
     increment(req, res, next) {
@@ -61,7 +76,7 @@ module.exports = {
       Item.create({ ...req.body, creatorId: req.user._id })
         .then(createdItem => {
           // console.log(createdItem.toString());
-          res.redirect("/");
+          res.redirect("/items");
         })
         .catch(next);
     },
