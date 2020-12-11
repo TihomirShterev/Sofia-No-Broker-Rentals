@@ -12,7 +12,6 @@ export class ItemService {
   constructor(private http: HttpClient) { }
 
   getItems(): Observable<IItem[]> {
-    return this.http.get<IItem[]>(`${apiUrl}/`);
-    // return this.http.get<IItem[]>(`${apiUrl}/items`);
+    return this.http.get<IItem[]>(`${apiUrl}/items`);
   }
 }
