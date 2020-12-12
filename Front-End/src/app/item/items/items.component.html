@@ -1,5 +1,5 @@
 <div *ngIf="items">
-  <app-details *ngFor="let item of items" [item]="item"></app-details>
+  <app-item *ngFor="let item of items" [item]="item"></app-item>
   <div *ngIf="items.length === 0">No Offers!</div>
 </div>
 

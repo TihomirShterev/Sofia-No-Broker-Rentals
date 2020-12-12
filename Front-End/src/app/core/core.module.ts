@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { storageServiceProvider } from './storage.service';
+import { UserService } from '../user/user.service';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -11,7 +14,12 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
+  ],
+  providers: [
+    storageServiceProvider,
+    UserService
   ],
   exports: [
     HeaderComponent,

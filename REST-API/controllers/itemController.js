@@ -3,10 +3,8 @@ const { Item, User } = require("../models");
 module.exports = {
   get: {
     items(req, res, next) {
-      Item.find({}) // find({}), за да вземем всички записи в базата
+      Item.find({})
       .lean()
-        // .sort({ peopleWhoIncremented: -1 })
-        // // .sort({ peopleWhoIncremented: "desc" }) // втори вариант
         .then(items => {
           // console.log(items);
           res.json(items);
@@ -53,7 +51,7 @@ module.exports = {
     },
     delete(req, res, next) {
       Item.deleteOne({ _id: req.params.itemId }).then(result => {
-        res.redirect("/items");
+        res.redirect("/item");
       });
     },
     increment(req, res, next) {
@@ -64,7 +62,7 @@ module.exports = {
 
       Item.updateOne({ _id: itemId }, { $push: { peopleWhoIncremented: userId } })
         .then(() => {
-          res.redirect(`/details/${itemId}`);
+          res.redirect(`/item/details/${itemId}`);
         })
         .catch(next);
     }
@@ -76,7 +74,7 @@ module.exports = {
       Item.create({ ...req.body, creatorId: req.user._id })
         .then(createdItem => {
           // console.log(createdItem.toString());
-          res.redirect("/items");
+          res.redirect("/item");
         })
         .catch(next);
     },
@@ -87,7 +85,7 @@ module.exports = {
       const { itemId } = req.params;
 
       Item.updateOne({ _id: itemId }, { $set: { ...req.body } }).then(updatedItem => {
-        res.redirect(`/details/${itemId}`);
+        res.redirect(`/item/details/${itemId}`);
       });
     }
   }

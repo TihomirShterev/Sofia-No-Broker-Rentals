@@ -36,11 +36,11 @@ module.exports = {
           res
             .status(200)
             .cookie(cookie, token, { maxAge: 3600000 }) //
-            .redirect("/items");
+            .redirect("/item");
         })
         .catch(e => {
           console.log(e);
-          res.redirect("/register");
+          res.redirect("/user/register");
         });
     },
 
@@ -63,7 +63,7 @@ module.exports = {
           res
             .status(200)
             .cookie(cookie, token, { maxAge: 3600000 }) //
-            .redirect("/items");
+            .redirect("/item");
         })
         .catch(e => {
           console.log(e);

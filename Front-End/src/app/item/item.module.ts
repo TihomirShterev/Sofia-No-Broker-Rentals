@@ -2,19 +2,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ItemsComponent } from './items/items.component';
-import { DetailsComponent } from './details/details.component';
+import { ItemComponent } from './item/item.component';
+import { ItemService } from './item.service';
 
 @NgModule({
   declarations: [
     ItemsComponent,
-    DetailsComponent
+    ItemComponent
   ],
   imports: [
     CommonModule
   ],
+  providers: [
+    ItemService
+  ],
   exports: [
     ItemsComponent,
-    DetailsComponent
+    ItemComponent
   ]
 })
 export class ItemModule { }
