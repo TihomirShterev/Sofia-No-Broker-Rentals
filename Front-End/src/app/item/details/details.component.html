@@ -1,0 +1,17 @@
+<div class="item-content" *ngIf="item">
+  <!-- item-title  -->
+  <div class="item-title">
+      <div class="item-name-wrapper">
+          <div class="item-name">
+              <h2>{{item.title}}</h2>
+          </div>
+          <div class="peopleWhoIncremented">
+              <p>Likes: <span>{{item.peopleWhoIncremented.length}}</span></p>
+              <!-- <button class="increment">Like</button>
+              <button class="decrement">Dislike</button> -->
+          </div>
+      </div>
+  </div>
+
+</div>
+<!-- <app-loader [isLoading]="!item"></app-loader> -->

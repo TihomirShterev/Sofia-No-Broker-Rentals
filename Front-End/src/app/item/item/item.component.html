@@ -1,7 +1,7 @@
 <div class="item-container">
   <div class="item-name-wrapper">
       <div class="item-name">
-          <a href="#" class="normal">
+          <a [routerLink]="['/item/details', item._id]" class="normal">
               <h2>{{item.title}}</h2>
           </a>
           <div class="columns">

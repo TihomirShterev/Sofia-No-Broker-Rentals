@@ -1,10 +1,17 @@
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../core/guard/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {
     path: 'user',
+    canActivateChild: [
+      AuthGuard
+    ],
+    data: {
+      testing: 123
+    },
     children: [
       {
         path: 'register',

@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { storageServiceProvider } from './storage.service';
-import { UserService } from '../user/user.service';
 import { RouterModule } from '@angular/router';
+import { AuthGuard } from './guard/auth.guard';
 
 
 
@@ -19,7 +20,7 @@ import { RouterModule } from '@angular/router';
   ],
   providers: [
     storageServiceProvider,
-    UserService
+    AuthGuard
   ],
   exports: [
     HeaderComponent,
