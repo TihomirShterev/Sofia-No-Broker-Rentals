@@ -6,10 +6,10 @@
       <p class="field field-icon">
           <label for="email"><span><i class="fas fa-envelope"></i></span></label>
           <!-- <input #userEmail="ngModel" [class.input-error]="userEmail.touched && !!userEmail.errors" type="text" name="email"
-            id="email" placeholder="john.doe@gmail.com" ngModel required email pattern="^[a-zA-Z\.-]{6,}@\w+\.(com|bg)$"> -->
+            id="email" placeholder="pesho.peshev@gmail.com" ngModel required email pattern="^[a-zA-Z\.-]{6,}@\w+\.(com|bg)$"> -->
           <!-- втори начин -->
           <input #userEmail="ngModel" [class.input-error]="userEmail.touched && !!userEmail.errors" type="text" name="email"
-            id="email" placeholder="john.doe@gmail.com" ngModel required required appEmailValidator>
+            id="email" placeholder="pesho.peshev@gmail.com" ngModel required required appEmailValidator>
       </p>
       <p *ngIf="userEmail.touched && userEmail.errors?.required" class="error">
           Email is required!
@@ -35,7 +35,7 @@
       <app-loader [isLoading]="isLoading"></app-loader>
 
       <p class="text-center">
-          You don't have an account?
+          No account yet?
           <a routerLink="/user/register">Register</a>
       </p>
 

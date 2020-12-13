@@ -22,7 +22,7 @@ export class HeaderComponent implements OnDestroy {
   constructor(
     title: Title,
     public userService: UserService,
-    router: Router
+    private router: Router
   ) {
 
     router.events.pipe(
@@ -49,7 +49,7 @@ export class HeaderComponent implements OnDestroy {
   }
 
   logoutHandler(): void {
-    this.userService.logout();
+    this.userService.logout().subscribe(() => this.router.navigate(["/user/login"]));
   }
 
   ngOnDestroy(): void {

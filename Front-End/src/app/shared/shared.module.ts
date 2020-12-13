@@ -4,8 +4,6 @@ import { CommonModule } from '@angular/common';
 import { LoaderComponent } from './loader/loader.component';
 import { EmailValidatorDirective } from './email-validator.directive';
 
-
-
 @NgModule({
   declarations: [
     // IsEmptyDirective,
