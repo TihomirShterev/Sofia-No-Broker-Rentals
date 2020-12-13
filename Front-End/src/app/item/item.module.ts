@@ -6,15 +6,19 @@ import { ItemComponent } from './item/item.component';
 import { ItemService } from './item.service';
 import { ItemRouterModule } from './item-routing.module';
 import { DetailsComponent } from './details/details.component';
+import { CreateComponent } from './create/create.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
     ItemsComponent,
     ItemComponent,
-    DetailsComponent
+    DetailsComponent,
+    CreateComponent
   ],
   imports: [
     CommonModule,
+    SharedModule,
     ItemRouterModule
   ],
   providers: [
@@ -22,8 +26,7 @@ import { DetailsComponent } from './details/details.component';
   ],
   exports: [
     ItemsComponent,
-    ItemComponent,
-    DetailsComponent
+    ItemComponent
   ]
 })
 export class ItemModule { }

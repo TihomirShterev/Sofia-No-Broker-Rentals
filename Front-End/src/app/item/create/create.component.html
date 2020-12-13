@@ -1,0 +1,32 @@
+<div class="new-item-border">
+  <div class="header-background">
+      <span>New item</span>
+  </div>
+  <form>
+      <div class="new-item-title">
+          <label for="itemName">Title <span class="red">*</span></label>
+          <input type="text" name="itemName" id="itemName">
+          <p class="error">
+              Title is required.
+          </p>
+          <p class="error">
+              Title must be at least 5 characters long.
+          </p>
+      </div>
+      <div class="new-item-content">
+          <label for="description">Description <span class="red">*</span></label>
+          <textarea type="text" name="description" id="description" rows="8" class="height"></textarea>
+          <p class="error">
+              The field with your description is required.
+          </p>
+          <p class="error">
+              Description must be at least 10 characters long.
+          </p>
+      </div>
+      <div class="new-item-buttons">
+          <button class="cancel">Back</button>
+          <button class="public">Create</button>
+      </div>
+
+  </form>
+</div>

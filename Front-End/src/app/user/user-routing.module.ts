@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: 'user',
     canActivateChild: [
-      AuthGuard
+      // AuthGuard
     ],
     data: {
       testing: 123

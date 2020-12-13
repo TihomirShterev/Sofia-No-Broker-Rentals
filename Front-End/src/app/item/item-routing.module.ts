@@ -1,4 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
+import { CreateComponent } from './create/create.component';
 import { DetailsComponent } from './details/details.component';
 import { ItemComponent } from './item/item.component';
 
@@ -12,10 +13,17 @@ const routes: Routes = [
     }
   },
   {
+    path: 'item/create',
+    component: CreateComponent,
+    data: {
+      title: 'CREATE ITEM'
+    }
+  },
+  {
     path: 'item/details/:id',
     component: DetailsComponent,
     data: {
-      title: 'ITEM DETAIL'
+      title: 'ITEM DETAILS'
     }
   }
 ];
