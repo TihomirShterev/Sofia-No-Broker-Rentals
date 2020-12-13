@@ -6,9 +6,6 @@
       <div class="mini-navbar">
         <ul>
           <li *ngIf="isLogged">
-              <a routerLink="/user/profile">Welcome, Pesho!</a>
-          </li>
-          <li *ngIf="isLogged">
               <a (click)="logoutHandler()">Logout</a>
           </li>
           <li *ngIf="!isLogged">

@@ -5,34 +5,11 @@ import { UserService } from '../user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css', '../../../form-styles.css']
 })
 export class LoginComponent implements OnInit {
   isLoading= false;
-  errorMessage: string = null;
-
-  form = {
-    email: {
-      touched: false,
-      value: ""
-    },
-    password: {
-      touched: false,
-      value: ""
-    }
-  };
-
-  get showEmailError(): boolean {
-    return this.form.email.touched && this.form.email.value.length === 0;
-  }
-
-  get showPasswordError(): boolean {
-    return this.form.password.touched && this.form.password.value.length === 0;
-  }
-
-  get hasFormErrors(): boolean {
-    return this.form.email.value.length === 0 || this.form.password.value.length === 0;
-  }
+  errorMessage: string = "";
 
   constructor(
     private userService: UserService,
@@ -42,16 +19,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  updateInputValue(name: "email" | "password", value: string): void {
-    this.form[name].touched = true;
-    this.form[name].value = value;
-  }
-
-  submitFormHandler(): void {
-    const { email: { value: email }, password: { value: password } } = this.form;
+  submitFormHandler(formValue: { email: string, password: string }): void {
     this.isLoading = true;
     this.errorMessage = "";
-    this.userService.login({email, password}).subscribe({
+    this.userService.login(formValue).subscribe({
       next: (data) => {
       this.isLoading = false;
       this.router.navigate(["/"]);
