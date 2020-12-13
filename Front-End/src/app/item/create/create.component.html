@@ -1,15 +1,48 @@
-<div class="new-item-border">
+<!-- <div class="new-item-border">
   <div class="header-background">
       <span>New item</span>
   </div>
-  <form #f="ngForm" (ngSubmit)="submitHandler(f.value)">
+  <form>
       <div class="new-item-title">
-          <label for="title">Title <span class="red">*</span></label>
-          <input type="text" name="title" id="title">
+          <label for="itemName">Title <span class="red">*</span></label>
+          <input type="text" name="itemName" id="itemName">
           <p class="error">
               Title is required.
           </p>
           <p class="error">
+              Title must be at least 5 characters long.
+          </p>
+      </div>
+      <div class="new-item-content">
+          <label for="description">Description <span class="red">*</span></label>
+          <textarea type="text" name="description" id="description" rows="8" class="height"></textarea>
+          <p class="error">
+              The field with your description is required.
+          </p>
+          <p class="error">
+              Description must be at least 10 characters long.
+          </p>
+      </div>
+      <div class="new-item-buttons">
+          <button class="cancel">Back</button>
+          <button class="public">Create</button>
+      </div>
+
+  </form>
+</div> -->
+
+<div class="new-item-border">
+  <div class="header-background">
+      <span>Create Offer</span>
+  </div>
+  <form #f="ngForm" (ngSubmit)="submitHandler(f.value)">
+      <div class="new-item-title">
+          <label for="title">Title <span class="red">*</span></label>
+          <input #title="ngModel"  type="text" name="title" id="title" ngModel required minlength="5">
+          <p class="error" *ngIf="title.touched && title.errors?.required">
+              Title is required.
+          </p>
+          <p class="error" *ngIf="title.touched && title.errors?.minlength">
               Title must be at least 5 characters long.
           </p>
       </div>

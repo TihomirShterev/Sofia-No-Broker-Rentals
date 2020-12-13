@@ -12,11 +12,11 @@ export class ItemService {
   constructor(private http: HttpClient) { }
 
   getItems(): Observable<IItem[]> {
-    return this.http.get<IItem[]>(`${apiUrl}/items`);
+    return this.http.get<IItem[]>(`${apiUrl}/item`);
   }
 
   getDetails(id: string): Observable<IItem> {
-    return this.http.get<IItem>(`${apiUrl}/details/${id}`);
+    return this.http.get<IItem>(`${apiUrl}/item/details/${id}`);
   }
 
   postCreate(data: any): Observable<IItem> {

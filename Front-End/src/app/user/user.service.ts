@@ -10,38 +10,28 @@ const apiUrl = environment.apiUrl;
 
 @Injectable()
 export class UserService {
-  // isLogged = false;
   currentUser: IUser | null;
 
   get isLogged(): boolean { return !!this.currentUser; }
-  
-  // constructor(private storage: StorageService) {
+
   constructor(private http: HttpClient) {
-    // constructor(private storage: StorageService) {
-    // this.isLogged = this.storage.getItem("isLogged");
   }
 
   register(data: any): Observable<any> {
     return this.http
-    .post(`${apiUrl}/user/register`, data, { withCredentials: true })
+    .post(`${apiUrl}/user/register`, data, { withCredentials: true }) // withCredentials won't work at production
     .pipe(tap((user: IUser) => this.currentUser = user));
   }
 
   login(data: any): Observable<any> {
-    // this.isLogged = true;
-    // this.storage.setItem("isLogged", true);
-    // return of(data).pipe(delay(3000));
     return this.http
-    .post(`${apiUrl}/users/login`, data, { withCredentials: true })
+    .post(`${apiUrl}/user/login`, data, { withCredentials: true })
     .pipe(tap((user: IUser) => this.currentUser = user));
   }
 
   logout(): Observable<any> {
-    // this.isLogged = false;
-    // this.storage.setItem("isLogged", false);
-    // return of(null).pipe(delay(3000));
     return this.http
-    .post(`${apiUrl}/users/logout`, {}, { withCredentials: true })
-    .pipe(tap(() => this.currentUser = null));;
+    .post(`${apiUrl}/user/logout`, {}, { withCredentials: true })
+    .pipe(tap(() => this.currentUser = null));
   }
 }

@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     this.userService.login(formValue).subscribe({
       next: (data) => {
       this.isLoading = false;
-      this.router.navigate(["/"]);
+      this.router.navigate(["/item"]);
     }, 
       error: (err) => {
         this.errorMessage = "ERROR!";

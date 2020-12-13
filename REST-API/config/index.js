@@ -7,7 +7,7 @@ const config = {
     cookie: "x-auth-token",
     secret: "SuperSecretSecret",
     saltRounds: 11,
-    origin: ["http://localhost:5555", "http://localhost:4200"]
+    origin: "http://localhost:4200"
   },
   production: {
     port: process.env.PORT || 3000,

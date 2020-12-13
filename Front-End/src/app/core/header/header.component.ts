@@ -22,6 +22,7 @@ export class HeaderComponent implements OnDestroy {
   constructor(
     title: Title,
     public userService: UserService,
+    // router: Router
     private router: Router
   ) {
 
@@ -49,7 +50,8 @@ export class HeaderComponent implements OnDestroy {
   }
 
   logoutHandler(): void {
-    this.userService.logout().subscribe(() => this.router.navigate(["/user/login"]));
+    // this.userService.logout();
+    this.userService.logout().subscribe(() => this.router.navigate(["/home"]));
   }
 
   ngOnDestroy(): void {

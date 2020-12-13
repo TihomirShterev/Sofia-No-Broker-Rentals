@@ -35,7 +35,8 @@ module.exports = {
 
           res
             .status(200)
-            .cookie(cookie, token, { maxAge: 3600000 }) //
+            .cookie(cookie, token, { maxAge: 3600000 })
+            .send(user)
             .redirect("/item");
         })
         .catch(e => {
@@ -62,7 +63,8 @@ module.exports = {
 
           res
             .status(200)
-            .cookie(cookie, token, { maxAge: 3600000 }) //
+            .cookie(cookie, token, { maxAge: 3600000 })
+            .send(user)
             .redirect("/item");
         })
         .catch(e => {

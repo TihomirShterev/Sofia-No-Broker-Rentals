@@ -12,7 +12,8 @@ module.exports = {
           //   items
           // });
         })
-        .catch(e => console.log(e));
+        .catch(next);
+        // .catch(e => console.log(e));
     },
 
     create(req, res, next) {
@@ -74,7 +75,7 @@ module.exports = {
       Item.create({ ...req.body, creatorId: req.user._id })
         .then(createdItem => {
           // console.log(createdItem.toString());
-          res.redirect("/item");
+          res.status(200).json(createdItem).redirect("/item");
         })
         .catch(next);
     },
