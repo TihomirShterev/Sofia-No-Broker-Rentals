@@ -2,10 +2,10 @@
   <div class="header-background">
       <span>New item</span>
   </div>
-  <form>
+  <form #f="ngForm" (ngSubmit)="submitHandler(f.value)">
       <div class="new-item-title">
-          <label for="itemName">Title <span class="red">*</span></label>
-          <input type="text" name="itemName" id="itemName">
+          <label for="title">Title <span class="red">*</span></label>
+          <input type="text" name="title" id="title">
           <p class="error">
               Title is required.
           </p>
@@ -15,16 +15,16 @@
       </div>
       <div class="new-item-content">
           <label for="description">Description <span class="red">*</span></label>
-          <textarea type="text" name="description" id="description" rows="8" class="height"></textarea>
-          <p class="error">
+          <textarea #description="ngModel" type="text" name="description" id="description" rows="8" class="height" ngModel required minlength="10"></textarea>
+          <p class="error" *ngIf="description.touched && description.errors?.required">
               The field with your description is required.
           </p>
-          <p class="error">
+          <p class="error" *ngIf="description.touched && description.errors?.minlength">
               Description must be at least 10 characters long.
           </p>
       </div>
       <div class="new-item-buttons">
-          <button class="cancel">Back</button>
+          <button type="button" class="cancel" routerLink="/">Back</button>
           <button class="public">Create</button>
       </div>
 

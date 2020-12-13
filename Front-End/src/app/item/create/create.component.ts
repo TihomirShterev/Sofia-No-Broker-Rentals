@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ItemService } from '../item.service';
 
 @Component({
   selector: 'app-create',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private itemService: ItemService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
+
+  submitHandler(data: any): void {
+    this.itemService
+    .postCreate(data)
+    .subscribe({
+      next: () => {
+        this.router.navigate(["/item"]);
+      },
+      error: (err) => {
+
+      }
+    })
 
 }

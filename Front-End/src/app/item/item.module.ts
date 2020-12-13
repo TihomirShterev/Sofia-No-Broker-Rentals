@@ -8,6 +8,7 @@ import { ItemRouterModule } from './item-routing.module';
 import { DetailsComponent } from './details/details.component';
 import { CreateComponent } from './create/create.component';
 import { SharedModule } from '../shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     SharedModule,
+    FormsModule,
     ItemRouterModule
   ],
   providers: [
