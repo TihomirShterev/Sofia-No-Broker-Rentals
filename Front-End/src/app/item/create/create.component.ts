@@ -19,7 +19,7 @@ export class CreateComponent implements OnInit {
 
   submitHandler(data: any): void {
     this.itemService
-    .postCreate(data)
+    .create(data)
     .subscribe({
       next: () => {
         this.router.navigate(["/item"]);

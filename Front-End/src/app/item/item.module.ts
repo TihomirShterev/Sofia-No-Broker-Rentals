@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { ItemsComponent } from './items/items.component';
 import { ItemComponent } from './item/item.component';
-import { ItemService } from './item.service';
-import { ItemRouterModule } from './item-routing.module';
 import { DetailsComponent } from './details/details.component';
 import { CreateComponent } from './create/create.component';
-import { SharedModule } from '../shared/shared.module';
+
+import { ItemService } from './item.service';
+
 import { FormsModule } from '@angular/forms';
+import { ItemRouterModule } from './item-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [

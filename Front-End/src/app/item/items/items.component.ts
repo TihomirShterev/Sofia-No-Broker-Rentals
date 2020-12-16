@@ -8,6 +8,7 @@ import { ItemService } from '../item.service';
   styleUrls: ['./items.component.css']
 })
 export class ItemsComponent implements OnInit {
+  
   items: IItem[];
 
   constructor(private itemService: ItemService) { }

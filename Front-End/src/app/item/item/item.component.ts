@@ -7,10 +7,12 @@ import { IItem } from '../../shared/interfaces';
   styleUrls: ['./item.component.css']
 })
 export class ItemComponent implements OnInit {
+
   @Input() item: IItem;
 
   constructor() { }
 
   ngOnInit(): void {
   }
+  
 }
