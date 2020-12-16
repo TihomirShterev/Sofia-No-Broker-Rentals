@@ -1,20 +1,23 @@
-const jwt = require("jsonwebtoken");
-const { secret } = require("../config");
+const jwt = require('jsonwebtoken');
+const secret = process.env.SECRET || 'SoftSecret';
+
+function createToken(data) {
+    return jwt.sign(data, secret, { expiresIn: '1d' });
+}
+
+function verifyToken(token) {
+    return new Promise((resolve, reject) => {
+        jwt.verify(token, secret, (err, data) => {
+            if (err) {
+                reject(err);
+                return;
+            }
+            resolve(data);
+        });
+    });
+}
 
 module.exports = {
-  createToken(_id) {
-    return jwt.sign({ _id }, secret, { expiresIn: "1h" });
-  },
-
-  verifyToken(token) {
-    return new Promise((resolve, reject) => {
-      jwt.verify(token, secret, (err, payload) => {
-        if (err) {
-          reject(err);
-          return;
-        }
-        resolve(payload);
-      });
-    });
-  }
-};
+    createToken,
+    verifyToken
+}

@@ -18,11 +18,11 @@ function getItem(req, res, next) {
 }
 
 function createItem(req, res, next) {
-  const { title, postText } = req.body;
+  const { title, description } = req.body;
   const { _id: userId } = req.user;
 
   itemModel
-    .create({ title, postText, userId, peopleWhoIncremented: [userId] })
+    .create({ title, description, userId, peopleWhoIncremented: [userId] })
     .then(item => {
       res.status(200).json(item);
     })
