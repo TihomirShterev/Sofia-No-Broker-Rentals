@@ -8,6 +8,7 @@ import { UserService } from '../user.service';
   styleUrls: ['./login.component.css', '../../../form-styles.css']
 })
 export class LoginComponent implements OnInit {
+  
   isLoading= false;
   errorMessage: string = "";
 

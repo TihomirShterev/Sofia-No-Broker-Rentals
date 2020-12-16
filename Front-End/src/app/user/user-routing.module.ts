@@ -1,13 +1,14 @@
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../core/guard/auth.guard';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {
     path: 'user',
     canActivateChild: [
-      // AuthGuard
+      AuthGuard
     ],
     data: {
       testing: 123
@@ -28,6 +29,14 @@ const routes: Routes = [
         data: {
           isLogged: false,
           title: 'USER LOGIN'
+        }
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+        data: {
+          isLogged: true,
+          title: 'USER PROFILE'
         }
       }
     ]
