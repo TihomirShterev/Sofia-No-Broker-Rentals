@@ -5,7 +5,7 @@ export function emailValidator(control: AbstractControl): ValidationErrors | nul
 
   if (!value) { return null; }
   
-  const isValidEmail = /^[a-zA-Z\.-0-9]{6,}@\w+\.(com|bg)$/.test((control.value as string));
+  const isValidEmail = /^[a-zA-Z0-9\.-]{6,}@\w+\.(com|bg)$/.test((control.value as string));
 
   return isValidEmail ? null : { emailValidator: true };
 }
