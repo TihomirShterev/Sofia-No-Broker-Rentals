@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { storageServiceProvider } from './storage.service';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from './guard/auth.guard';
 
@@ -19,7 +18,6 @@ import { AuthGuard } from './guard/auth.guard';
     RouterModule
   ],
   providers: [
-    storageServiceProvider,
     AuthGuard
   ],
   exports: [
