@@ -22,6 +22,13 @@ export class UserService {
     .pipe(tap((user: IUser) => this.currentUser = user));
   }
 
+  getProfile(): Observable<any> {
+    return this.http.get(`${apiUrl}/users/profile`, { withCredentials: true }).pipe(
+      tap(((user: IUser) => this.currentUser = user)),
+      catchError(() => { this.currentUser = null; return of(null); })
+    );
+  }
+
   login(data: any): Observable<any> {
     return this.http
     .post(`${apiUrl}/user/login`, data, { withCredentials: true })
