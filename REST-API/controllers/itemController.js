@@ -1,93 +1,48 @@
-const { Item, User } = require("../models");
+const { itemModel } = require("../models");
+
+function getItems(req, res, next) {
+  itemModel
+    .find()
+    .populate("userId")
+    .then(items => res.json(items))
+    .catch(next);
+}
+
+function getItem(req, res, next) {
+  const { itemId } = req.params;
+
+  itemModel
+    .findById(itemId)
+    .then(item => res.json(item))
+    .catch(next);
+}
+
+function createItem(req, res, next) {
+  const { title, postText } = req.body;
+  const { _id: userId } = req.user;
+
+  itemModel
+    .create({ title, postText, userId, peopleWhoIncremented: [userId] })
+    .then(item => {
+      res.status(200).json(item);
+    })
+    .catch(next);
+}
+
+function increment(req, res, next) {
+  const itemId = req.params.itemId;
+  const { _id: userId } = req.user;
+  itemModel
+    .findByIdAndUpdate({ _id: itemId }, { $addToSet: { peopleWhoIncremented: userId } }, { new: true })
+    .then(updatedItem => {
+      res.status(200).json(updatedItem);
+    })
+    .catch(next);
+}
 
 module.exports = {
-  get: {
-    items(req, res, next) {
-      Item.find({})
-      .lean()
-        .then(items => {
-          // console.log(items);
-          res.json(items);
-          // res.render("./items/items.hbs", {
-          //   items
-          // });
-        })
-        .catch(next);
-        // .catch(e => console.log(e));
-    },
-
-    create(req, res, next) {
-      // res.render("./items/create.hbs");
-    },
-    details(req, res, next) {
-      let itemId = req.params.itemId;
-      let isCreator = false;
-      let isAlreadyIncremented = false;
-      // console.log(req.user._id);
-      let userId = req.user._id.toString();
-      let peopleWhoIncremented = 0;
-
-      Item.findOne({ _id: itemId })
-        .lean()
-        .then(item => {
-          item.creatorId.toString() === userId ? (isCreator = true) : (isCreator = false);
-          if (item.peopleWhoIncremented) {
-            peopleWhoIncremented = item.peopleWhoIncremented.length;
-            // console.log(item.peopleWhoIncremented.toString());
-            if (item.peopleWhoIncremented.toString().includes(userId)) {
-              isAlreadyIncremented = true;
-            }
-          }
-          res.json(item);
-          // res.render("./items/details.hbs", { ...item, isCreator, isAlreadyIncremented, peopleWhoIncremented });
-        })
-        .catch(next);
-    },
-
-    edit(req, res, next) {
-      Item.findOne({ _id: req.params.itemId }).then(item => {
-        console.log(item);
-        // res.render("./items/edit.hbs", item);
-      });
-    },
-    delete(req, res, next) {
-      Item.deleteOne({ _id: req.params.itemId }).then(result => {
-        res.redirect("/item");
-      });
-    },
-    increment(req, res, next) {
-      // console.log(req.params.itemId);
-      let itemId = req.params.itemId;
-      // console.log(req.user._id.toString());
-      let userId = req.user._id.toString();
-
-      Item.updateOne({ _id: itemId }, { $push: { peopleWhoIncremented: userId } })
-        .then(() => {
-          res.redirect(`/item/details/${itemId}`);
-        })
-        .catch(next);
-    }
-  },
-
-  post: {
-    create(req, res, next) {
-      // console.log(req.body);
-      Item.create({ ...req.body, creatorId: req.user._id })
-        .then(createdItem => {
-          // console.log(createdItem.toString());
-          res.status(200).json(createdItem).redirect("/item");
-        })
-        .catch(next);
-    },
-
-    edit(req, res, next) {
-      // console.log(req.params.itemId);
-      // console.log(req.body);
-      const { itemId } = req.params;
-
-      Item.updateOne({ _id: itemId }, { $set: { ...req.body } }).then(updatedItem => {
-        res.redirect(`/item/details/${itemId}`);
-      });
-    }
-  }
+  getItems,
+  createItem,
+  getItem,
+  increment
 };

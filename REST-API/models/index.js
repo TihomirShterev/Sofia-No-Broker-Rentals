@@ -1,10 +1,9 @@
-const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
-
-const getUserModel = require("./User");
-const getItemModel = require("./Item");
+const userModel = require("./userModel");
+const tokenBlacklistModel = require("./tokenBlacklistModel");
+const itemModel = require("./itemModel");
 
 module.exports = {
-  User: getUserModel(mongoose, bcrypt),
-  Item: getItemModel(mongoose)
+  userModel,
+  tokenBlacklistModel,
+  itemModel
 };
