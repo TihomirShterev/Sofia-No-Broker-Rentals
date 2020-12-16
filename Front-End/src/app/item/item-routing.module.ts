@@ -7,7 +7,7 @@ import { ItemsComponent } from './items/items.component';
 const routes: Routes = [
   {
     path: "item",
-    canActivateChild: [ AuthGuard ],
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: '',

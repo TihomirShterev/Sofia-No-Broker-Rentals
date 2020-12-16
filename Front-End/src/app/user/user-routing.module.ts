@@ -7,9 +7,7 @@ import { RegisterComponent } from './register/register.component';
 const routes: Routes = [
   {
     path: 'user',
-    canActivateChild: [
-      AuthGuard
-    ],
+    canActivateChild: [AuthGuard],
     data: {
       testing: 123
     },

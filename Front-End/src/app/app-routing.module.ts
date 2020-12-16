@@ -6,7 +6,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 const routes: Routes = [
   {
     path: "",
-    // canActivateChild: [ AuthGuard ],
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: "",

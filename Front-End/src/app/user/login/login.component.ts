@@ -8,7 +8,7 @@ import { UserService } from '../user.service';
   styleUrls: ['./login.component.css', '../../../form-styles.css']
 })
 export class LoginComponent implements OnInit {
-  
+
   isLoading= false;
   errorMessage: string = "";
 
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     this.userService.login(formValue).subscribe({
       next: (data) => {
       this.isLoading = false;
-      this.router.navigate(["/item"]);
+      this.router.navigate(["/"]);
     }, 
       error: (err) => {
         this.errorMessage = "ERROR!";
