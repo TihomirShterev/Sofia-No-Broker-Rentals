@@ -19,7 +19,7 @@ export class ItemService {
     return this.http.get<IItem>(`${apiUrl}/item/details/${id}`);
   }
 
-  postCreate(data: any): Observable<IItem> {
-    return this.http.post<IItem>(`${apiUrl}/item`, data, { withCredentials: true });
+  postCreate(data: any): Observable<IItem<any>> {
+    return this.http.post<IItem<any>>(`${apiUrl}/item/create`, data, { withCredentials: true });
   }
 }
