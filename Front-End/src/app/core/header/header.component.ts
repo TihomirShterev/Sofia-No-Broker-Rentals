@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../../user/user.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,17 +10,16 @@ import { UserService } from '../../user/user.service';
 export class HeaderComponent implements OnDestroy {
 
   get isLogged(): boolean {
-    return this.userService.isLogged;
+    return this.authService.isLogged;
   }
 
   constructor(
-    private userService: UserService,
+    private authService: AuthService,
     private router: Router
   ) { }
 
   logoutHandler(): void {
-    // this.userService.logout().subscribe(() => this.router.navigate(['/home']));
-    this.userService.logout().subscribe(() => this.router.navigate(['/user/login']));
+    this.authService.logout().subscribe(() => this.router.navigate(['/user/login']));
   }
 
   ngOnDestroy(): void {

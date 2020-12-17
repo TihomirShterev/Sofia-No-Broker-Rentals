@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../user.service';
+import { AuthService } from 'src/app/core/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -8,11 +8,12 @@ import { UserService } from '../user.service';
   styleUrls: ['./register.component.css', '../../../form-styles.css']
 })
 export class RegisterComponent implements OnInit {
-  isLoading= false;
-  errorMessage: string = "";
+  
+  isLoading = false;
+  errorMessage = "";
 
   constructor(
-    private userService: UserService,
+    private authService: AuthService,
     private router: Router
     ) { }
 
@@ -22,12 +23,10 @@ export class RegisterComponent implements OnInit {
   submitFormHandler(formValue: { email: string, password: string, rePassword: string }): void {
     this.isLoading = true;
     this.errorMessage = "";
-    this.userService.register(formValue).subscribe({
+    this.authService.register(formValue).subscribe({
       next: (data) => {
       this.isLoading = false;
       this.router.navigate(["/"]);
-      // this.router.navigate(["/item"]);
-      // this.router.navigate(["/user/login"]);
     }, 
       error: (err) => {
         this.errorMessage = "ERROR!";

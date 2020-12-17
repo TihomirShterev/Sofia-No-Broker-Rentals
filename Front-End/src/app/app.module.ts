@@ -11,7 +11,6 @@ import { FooterComponent } from './core/footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { ItemModule } from './item/item.module';
-import { UserModule } from './user/user.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
@@ -25,8 +24,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ItemModule,
-    UserModule
+    ItemModule
   ],
   providers: [],
   bootstrap: [
