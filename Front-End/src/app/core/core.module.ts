@@ -5,6 +5,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from './guard/auth.guard';
+import { appInterceptorProvider } from './app.interceptor';
 
 
 
@@ -18,7 +19,8 @@ import { AuthGuard } from './guard/auth.guard';
     RouterModule
   ],
   providers: [
-    AuthGuard
+    AuthGuard,
+    appInterceptorProvider
   ],
   exports: [
     HeaderComponent,

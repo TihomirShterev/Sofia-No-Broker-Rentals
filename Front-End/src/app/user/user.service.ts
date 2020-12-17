@@ -18,18 +18,18 @@ export class UserService {
 
   register(data: any): Observable<any> {
     return this.http
-    .post(`${apiUrl}/users/register`, data, { withCredentials: true }) // withCredentials won't work at production
+    .post("/users/register", data)
     .pipe(tap((user: IUser) => this.currentUser = user));
   }
 
   login(data: any): Observable<any> {
     return this.http
-    .post(`${apiUrl}/users/login`, data, { withCredentials: true })
+    .post("/users/login", data)
     .pipe(tap((user: IUser) => this.currentUser = user));
   }
 
   getProfile(): Observable<any> {
-    return this.http.get(`${apiUrl}/users/profile`, { withCredentials: true }).pipe(
+    return this.http.get("/users/profile").pipe(
       tap(((user: IUser) => this.currentUser = user)),
       catchError(() => { this.currentUser = null; return of(null); })
     );
@@ -37,7 +37,7 @@ export class UserService {
 
   logout(): Observable<any> {
     return this.http
-    .post(`${apiUrl}/users/logout`, {}, { withCredentials: true })
+    .post("/users/logout", {})
     .pipe(tap(() => this.currentUser = null));
   }
 }
