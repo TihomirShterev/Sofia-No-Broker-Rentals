@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { IUser } from '../shared/interfaces';
 
 @Injectable()
@@ -29,7 +29,13 @@ export class AuthService {
   authenticate(): Observable<any> {
     return this.http
     .get("/users/profile")
-    .pipe(tap(((user: IUser) => this.currentUser = user)));
+    .pipe(
+      tap(((user: IUser) => this.currentUser = user)),
+      catchError(() => {
+        this.currentUser = null;
+        return [null];
+      })
+    );
   }
 
   logout(): Observable<any> {
