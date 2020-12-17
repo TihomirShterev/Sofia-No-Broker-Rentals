@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { IItem } from "../shared/interfaces";
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
-
-const apiUrl = environment.apiUrl;
 
 @Injectable()
 export class ItemService {
@@ -16,7 +13,7 @@ export class ItemService {
   }
 
   getDetails(id: string): Observable<IItem> {
-    return this.http.get<IItem>("/items/${id}");
+    return this.http.get<IItem>(`/items/${id}`);
   }
 
   create(data: any): Observable<IItem> {
