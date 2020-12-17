@@ -4,6 +4,7 @@ html {
 
 body, form, input, textarea, option, select, button {
     font: inherit;
+    background: rgb(241, 238, 220);
 }
 
 ul, ol {
