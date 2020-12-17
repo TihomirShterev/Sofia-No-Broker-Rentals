@@ -26,6 +26,11 @@ const routes: Routes = [
         loadChildren: () => import("./user/user.module").then(m => m.UserModule) // lazy loading
       },
       {
+        path: 'item',
+        canActivateChild: [AuthGuard],
+        loadChildren: () => import("./item/item.module").then(m => m.ItemModule) // lazy loading
+      },
+      {
         path: "**",
         component: PageNotFoundComponent,
         data: {

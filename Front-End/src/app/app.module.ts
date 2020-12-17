@@ -23,8 +23,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     CoreModule,
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule,
-    ItemModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [

@@ -5,10 +5,6 @@ import { DetailsComponent } from './details/details.component';
 import { ItemsComponent } from './items/items.component';
 
 const routes: Routes = [
-  {
-    path: "item",
-    canActivateChild: [AuthGuard],
-    children: [
       {
         path: '',
         pathMatch: 'full',
@@ -33,8 +29,6 @@ const routes: Routes = [
           isLogged: true
         }
       }
-    ]
-  }
 ];
 
 export const ItemRouterModule = RouterModule.forChild(routes);
