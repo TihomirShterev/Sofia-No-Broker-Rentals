@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.userService.getProfile().subscribe();
+    this.userService.getProfile().subscribe();
   }
 
 }
