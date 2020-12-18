@@ -7,6 +7,14 @@ const itemSchema = new mongoose.Schema(
       type: String,
       required: true
     },
+    imageURL: {
+      type: String,
+      required: true
+    },
+    description: {
+      type: String,
+      required: true
+    },
     peopleWhoIncremented: [
       {
         type: ObjectId,

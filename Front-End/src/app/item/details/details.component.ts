@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IItem } from 'src/app/shared/interfaces';
 import { ItemService } from '../item.service';
@@ -9,7 +9,9 @@ import { ItemService } from '../item.service';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-  item: IItem = null;
+  // item: IItem = null;
+
+  @Input() item: IItem;
 
   constructor(
     itemService: ItemService,

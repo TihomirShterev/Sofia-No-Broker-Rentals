@@ -2,7 +2,9 @@ import { IBase } from './base';
 import { IUser } from './user';
 
 export interface IItem extends IBase {
-  peopleWhoIncremented: string[];
   title: string;
+  imageURL: string;
+  description: string;
+  peopleWhoIncremented: string[];
   userId: IUser;
 }

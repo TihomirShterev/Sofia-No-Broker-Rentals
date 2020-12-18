@@ -31,8 +31,13 @@ header li {
 
 header a {
   text-decoration: none;
+  letter-spacing: 2px;
   color: white;
   cursor: pointer;
+}
+
+header a:hover {
+  color: black;
 }
 
 nav {
@@ -70,4 +75,10 @@ border-radius: 5px;
 .mini-navbar ul li+li {
 border-left: 1px solid lightgrey;
 padding-left: .5em;
+}
+
+.nav-header a {
+  /* border: solid 1px;
+  padding: 3px;
+  border-radius: 5px; */
 }

@@ -8,21 +8,22 @@ function getItems(req, res, next) {
     .catch(next);
 }
 
-function getItem(req, res, next) {
+function getDetails(req, res, next) {
   const { itemId } = req.params;
 
   itemModel
     .findById(itemId)
+    .populate("userId")
     .then(item => res.json(item))
     .catch(next);
 }
 
 function createItem(req, res, next) {
-  const { title, description } = req.body;
+  const { title, imageURL, description } = req.body;
   const { _id: userId } = req.user;
 
   itemModel
-    .create({ title, description, userId, peopleWhoIncremented: [userId] })
+    .create({ title, imageURL, description, peopleWhoIncremented: [userId], userId })
     .then(item => {
       res.status(200).json(item);
     })
@@ -43,6 +44,6 @@ function increment(req, res, next) {
 module.exports = {
   getItems,
   createItem,
-  getItem,
+  getDetails,
   increment
 };

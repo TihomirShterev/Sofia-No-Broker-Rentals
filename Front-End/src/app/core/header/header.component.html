@@ -20,15 +20,15 @@
       </ul>
       </div>
   </div>
-  <nav>
+  <nav class="nav-header">
       <ul>
           <li>
               <a href="/home">HOME</a>
           </li>
-          <li>
+          <li *ngIf="isLogged">
               <a href="/item">OFFERS</a>
           </li>
-          <li>
+          <li *ngIf="isLogged">
               <a href="/item/create">CREATE OFFER</a>
           </li>
       </ul>

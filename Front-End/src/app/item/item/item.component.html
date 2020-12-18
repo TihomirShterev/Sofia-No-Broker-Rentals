@@ -4,16 +4,17 @@
           <a [routerLink]="['/item/details', item._id]" class="normal">
               <h2>{{item.title | limitLength}}</h2>
           </a>
-          <div class="columns">
-              <div>
+          <!-- <div class="columns">
               <div class="nick-name">
-                <p>Author: <span>{{item.userId.email}}</span></p>
-              </div>
+                <p>Contact author: <span>{{item.userId.email}}</span></p>
               </div>
               <div class="peopleWhoIncremented">
-                  <!-- <button class="increment">Like</button> -->
+                  <button class="increment">Like</button>
                   <p>Likes: <span>{{item.peopleWhoIncremented.length}}</span></p>
               </div>
+          </div> -->
+          <div class="item-image">
+            <img src="{{item.imageURL}}" alt="">
           </div>
       </div>
   </div>

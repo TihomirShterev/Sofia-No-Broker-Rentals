@@ -7,7 +7,7 @@ router.get("/", itemController.getItems);
 
 router.post("/", auth(), itemController.createItem);
 
-router.get("/:itemId", itemController.getItem);
+router.get("/:itemId", itemController.getDetails);
 
 router.put("/:itemId", auth(), itemController.increment);
 

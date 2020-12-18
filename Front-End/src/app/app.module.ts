@@ -10,7 +10,6 @@ import { FooterComponent } from './core/footer/footer.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
-import { ItemModule } from './item/item.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({

@@ -1,10 +1,10 @@
 <div class="new-item-border">
   <div class="header-background">
-      <span>Create Offer</span>
+      <span>CREATE OFFER</span>
   </div>
   <form #f="ngForm" (ngSubmit)="submitHandler(f.value)">
       <div class="new-item-title">
-          <label for="title">Title <span class="red">*</span></label>
+          <label for="title">Title: <span class="red"></span></label>
           <input #title="ngModel"  type="text" name="title" id="title" 
           ngModel required minlength="5">
           <p class="error" *ngIf="title.touched && title.errors?.required">
@@ -14,8 +14,13 @@
               Title must be at least 5 characters long.
           </p>
       </div>
+      <div class="new-item-image">
+        <label for="imageURL">Image URL: <span class="red"></span></label>
+        <!-- <input type="text" name="imageURL" id="imageURL"> -->
+        <input #imageURL="ngModel" type="text" name="imageURL" id="imageURL" placeholder="http://..." ngModel required>
+      </div>
       <div class="new-item-content">
-          <label for="description">Description <span class="red">*</span></label>
+          <label for="description">Description: <span class="red"></span></label>
           <textarea #description="ngModel" type="text" name="description" id="description" 
           rows="8" class="height" ngModel required minlength="10"></textarea>
           <p class="error" *ngIf="description.touched && description.errors?.required">

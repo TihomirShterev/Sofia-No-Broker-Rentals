@@ -1,6 +1,7 @@
 .profile {
   width: 142%;
   max-width: 500px;
+  height: 380px;
   margin: 2em auto 1rem;
   padding: .5em;
   border: .3em solid rgb(211, 174, 10);
@@ -25,6 +26,8 @@
 
 .flex {
   display: flex;
+  font-size: x-large;
+  padding-right: 112px;
 }
 
 .flex p:first-child {

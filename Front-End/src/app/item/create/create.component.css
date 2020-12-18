@@ -14,19 +14,20 @@
 }
 
 .header-background {
-  background-color: rgb(211, 174, 10);
-  border: 1px solid rgb(211, 174, 10);
+  /* background-color: rgb(211, 174, 10);
+  border: 1px solid rgb(211, 174, 10); */
   padding: 1.5em;
   padding-bottom: 0;
   margin-bottom: 1em;
   border-top-right-radius: 1em;
   border-top-left-radius: 1em;
+  text-decoration: underline;
 }
 
 .header-background span {
-  background-color: #fff;
-  padding: 0.5em;
-  margin-top: 1em;
+  /* background-color: #fff;
+  padding: 0.5em; */
+  margin: 29px;
   border-radius: 0.3em;
 }
 

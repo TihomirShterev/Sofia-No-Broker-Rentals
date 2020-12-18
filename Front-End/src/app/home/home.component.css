@@ -2,8 +2,8 @@
 
 .welcome {
   padding: 0.3em 0.5em;
-  border: 1px solid #999;
-  border-radius: 0.3em;
+  /* border: 1px solid #999;
+  border-radius: 0.3em; */
   font-size: 0.8em;
   margin-top: 1em;
 }
@@ -20,6 +20,10 @@
   padding: 1em;
   border-bottom: 1px solid #999;
   font-style: normal;
+  font-size: x-large;
+  font-weight: 600;
+  font-family: fangsong;
+  text-align: center;
 }
 
 .welcome a {
@@ -45,4 +49,13 @@
 
 .welcome li {
   list-style: none;
+}
+
+img {
+  height: 290px;
+  border: solid #999;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
