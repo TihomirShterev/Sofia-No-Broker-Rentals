@@ -14,11 +14,13 @@ const removePassword = (data) => {
 
 function register(req, res, next) {
   const { email, password, repeatPassword } = req.body;
+  let myItems = 0;
 
-  return userModel.create({ email, password })
+  return userModel.create({ email, password, myItems })
       .then((createdUser) => {
           createdUser = bsonToJson(createdUser);
           createdUser = removePassword(createdUser);
+          // console.log(createdUser);
 
           const token = utils.jwt.createToken({ id: createdUser._id });
           if (process.env.NODE_ENV === 'production') {
@@ -88,7 +90,12 @@ function getProfile(req, res, next) {
   const { _id: userId } = req.user;
 
   userModel.findOne({ _id: userId }, { password: 0, __v: 0 }) //finding by Id and returning without password and __v
-      .then(user => { res.status(200).json(user) })
+      .populate("items")
+      // .populate("myItems")
+      .then(user => { 
+        console.log(user);
+        res.status(200).json(user) 
+      })
       .catch(next);
 }
 

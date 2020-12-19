@@ -5,6 +5,6 @@ export interface IItem extends IBase {
   title: string;
   imageURL: string;
   description: string;
-  peopleWhoIncremented: string[];
+  // peopleWhoIncremented: string[];
   userId: IUser;
 }

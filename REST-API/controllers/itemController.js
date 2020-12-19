@@ -1,4 +1,4 @@
-const { itemModel } = require("../models");
+const { itemModel, userModel } = require("../models");
 
 function getItems(req, res, next) {
   itemModel
@@ -22,12 +22,15 @@ function createItem(req, res, next) {
   const { title, imageURL, description } = req.body;
   const { _id: userId } = req.user;
 
-  itemModel
-    .create({ title, imageURL, description, peopleWhoIncremented: [userId], userId })
-    .then(item => {
-      res.status(200).json(item);
-    })
-    .catch(next);
+  Promise.all([
+    itemModel.create({ title, imageURL, description, peopleWhoIncremented: [userId], userId }), //
+    userModel.updateOne({ _id: userId }, { $inc: { myItems: 1 } })
+  ])
+  .then(item => {
+    // console.log(item);
+    res.status(200).json(item);
+  })
+  .catch(next);
 }
 
 function increment(req, res, next) {

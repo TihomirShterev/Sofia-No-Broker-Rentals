@@ -14,13 +14,13 @@ const itemSchema = new mongoose.Schema(
     description: {
       type: String,
       required: true
-    },
+    }/*,
     peopleWhoIncremented: [
       {
         type: ObjectId,
         ref: "User"
       }
-    ],
+    ] */,
     userId: {
       type: ObjectId,
       ref: "User"

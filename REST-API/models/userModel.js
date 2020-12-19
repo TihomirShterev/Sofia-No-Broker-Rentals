@@ -27,7 +27,11 @@ const userSchema = new mongoose.Schema(
         type: ObjectId,
         ref: "Item"
       }
-    ]
+    ],
+    myItems: {
+      type: Number,
+      required: true
+    }
   }
 );
 
