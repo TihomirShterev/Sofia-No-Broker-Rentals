@@ -20,7 +20,7 @@ home
 user
 .post /register - register new user
 .get /profile - get user info (accessible only by logged in user)
-.post /logout - logout user (accessible only by logged in user)
+.get /logout - logout user (accessible only by logged in user)
 .post /login - login user
 
 item
