@@ -1,5 +1,4 @@
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from '../core/guard/auth.guard';
 import { CreateComponent } from './create/create.component';
 import { DetailsComponent } from './details/details.component';
 import { ItemsComponent } from './items/items.component';
