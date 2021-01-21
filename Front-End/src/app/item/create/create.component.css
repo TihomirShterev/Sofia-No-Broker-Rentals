@@ -5,7 +5,7 @@
   border-radius: 1em;
   width: 80%;
   margin: auto;
-  margin-top: 2em;
+  margin-top: 9px;
   padding: 1em;
 }
 
@@ -78,6 +78,7 @@
 
 .new-item-content textarea {
   background: white;
+  height: 80px;
 }
 
 button+button {
