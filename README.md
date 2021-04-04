@@ -1,4 +1,4 @@
-# Sofia-Property-Rent
+# Sofia-Property-Rent-With-Angular
 
 SoftUni Angular Project
 
